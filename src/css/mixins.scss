@@ -1,0 +1,25 @@
+@mixin cc {
+    padding: 100px 0;
+    text-align: center;
+}
+
+@mixin customInput {
+    padding: 13px 24px;
+    
+    border: none;
+    
+    &::placeholder {
+        font: {
+            size: 14px;
+            style: italic;
+            weight: bold;
+        }
+    }
+}
+
+@mixin subsInput {
+    min-width: 350px;
+    @include xs-block() {
+        min-width: 250px;
+    }
+}

@@ -1,0 +1,285 @@
+@import "./mixins.scss";
+@import "./smart-grid.scss";
+@import "./vars.scss";
+
+
+.features {
+    @include row-flex();
+    @include cc();
+    justify-content: space-around;
+}
+
+.feature {
+    @include col();
+    @include size(6);
+    @include size-sm(12);
+    @include size-xs(17);
+    
+    @include xs(margin-top, 30px);
+    
+    text-align: center;
+    
+    &__img {
+        width: 150px;
+        height: 150px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0px auto;
+        border: 1px solid $ellips_color; 
+        border-radius: 50%;
+    }
+    &__title {
+        font-size: 16px;
+        line-height: 40px;
+        font-weight: bold;
+    }
+    &__desc {
+        color: $color-grey;
+        font-size: 14px;
+    }
+}
+
+.subscribe {
+    padding: 100px 0;
+    background: url(../images/subscribe-content-bg.jpg) no-repeat center;
+    background-size: cover;
+    text-align: center;
+    
+    input {
+        border-radius: 10px;
+        max-width: 100%;
+        @include xs-block() {
+            display: block;
+            margin: 0 auto;
+            margin-bottom: 20px;
+        }
+        &.email {
+            @include customInput();
+            @include subsInput();
+            
+        }
+    }
+}
+
+.ourWorks {
+    @include row-flex();
+    justify-content: space-around;
+    
+    .work {
+        @include col();
+        @include size(8);
+        flex-basis: 350px;
+        height: 350px;
+        margin-top: 28px;
+        border-radius: 10px;
+        
+        @include xs(height, 275px);
+        
+        &__content {
+            width: 100%;
+            height: 100%;
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 87px 0;
+            box-sizing: border-box;
+            color: $color-white;
+            opacity: 0;
+            border-radius: inherit;
+            transition: opacity .3s ease-in-out;
+            
+            &:hover {
+                background-color: $color-gold-op9;                
+                opacity: 1;
+            }
+            
+            @include xs(padding, 40px 0);
+            @include md-block() {
+                opacity: 1;
+                background-color: $color-gold-op6;
+                &:hover {
+                    opacity: 1;
+                    background-color: $color-gold-op6;
+                }
+            }
+            
+            &__title {
+                font: {
+                    size: 25px;
+                    weight: bold;
+                }
+            }
+            
+            &__desc {
+                font-size: 14px;
+                width: 70%;
+                letter-spacing: 1px;
+                margin-top: 27px;
+            }
+            .customBtn {
+                margin-top: auto;
+                
+                @include md-block() {
+                    background: $color-white;
+                    color: $color-gold;
+                }
+            }
+        }
+    }
+    
+    @for $i from 1 through 6 {
+        .work#{$i} {
+            background: url(../images/works#{$i}.jpg) no-repeat center;
+            background-size: cover;
+        }
+    }
+}
+
+.comments {
+    text-align: center;
+    background: url(../images/comments-bg.jpg) no-repeat center;
+    background-size: cover;
+    .swiper-pagination-bullet {
+        background: #fff;
+    }
+    .swiper-slide {
+        padding: 100px 0;
+        min-height: 100px;
+        @include sm-block() {
+            padding: 60px 0;
+        }
+        @include xs-block() {
+            padding: 40px 0;
+        }
+    }
+    .comment {
+        color: $color-white;
+        
+        &__author_img {
+            margin-bottom: 30px;
+            @include sm-block() {
+                margin-bottom: 20px;
+            }
+        }
+        &__text {
+            font-size: 25px;
+            font-style: italic;
+            line-height: 40px;
+            max-width: 600px;
+            margin: 0 auto;
+            
+            @include sm-block() {
+                font-size: 21px;
+                line-height: 25px;
+            }
+            @include xs-block() {
+                font-size: 16px;
+                padding: 0 10px;
+            }
+        }
+        &__author_name {
+            font-size: 18px;
+            line-height: 40px;
+        }
+    }
+    .swiper-button {
+        border-color: rgba(255, 255, 255, 0.315);
+    }
+}
+
+.team {
+    @include row-flex();
+    justify-content: space-evenly;
+    padding: 40px 0;
+    
+    &__member {
+        @include col();
+        @include size(6);
+        @include size-md(12);
+        @include size-xs(24);
+        
+        @include md(margin-bottom, 30px);
+        
+        @include sm-block {
+            color: $color-grey !important;
+            img:hover {
+                transform: scale(1.1) !important;
+            }
+            .fb {
+                background: #205b9f !important;
+            }
+            .tw {
+                background: #00ace3 !important;
+            }
+            .gg {
+                background: #ff3921 !important;
+            }
+        }
+        
+        max-width: 250px;
+        color: $color-grey-op6;
+        
+        &:hover {
+            @extend .members_hover;
+        } 
+        
+        
+        &__img {
+            margin-bottom: 20px;
+            transition: transform .3s ease-in-out;
+        }
+        &__name {
+            text-transform: uppercase;
+            font-size: 23px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: color .3s ease-in-out;
+            
+        }
+        &__socials {
+            margin-bottom: 15px;
+            a {
+                color: $color-white;
+                text-decoration: none;
+                display: inline-block;
+                margin: 0 5px;
+            }
+            
+            span {
+                width: 25px;
+                height: 25px;
+                
+                transition: background .3s ease-in-out, color .3s ease-in-out;
+                
+                border-radius: 50%;
+                display:  inline-flex;
+                justify-content: center;
+                align-items: center;
+                background: $color-grey-op6;
+            }
+        }
+        &__info {
+            font-size: 14px;
+            line-height: 24px;
+        }
+    }
+}
+
+.members_hover {
+    color: $color-grey !important;
+    img:hover {
+        transform: scale(1.1) !important;
+    }
+    .fb {
+        background: #205b9f !important;
+    }
+    .tw {
+        background: #00ace3 !important;
+    }
+    .gg {
+        background: #ff3921 !important;
+    }
+}
+

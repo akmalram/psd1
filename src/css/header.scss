@@ -1,0 +1,201 @@
+@import "./mixins.scss";
+@import "./smart-grid.scss";
+@import "./vars.scss";
+
+.headerScrollDown {
+    cursor: pointer;
+}
+
+header {
+    min-height: 80vh;
+    background: url(../images/header-bg.jpg) no-repeat;
+    background-size: cover;
+    color: $color-white;
+    position: relative;
+    padding-bottom: 30px;
+    
+    .headerScrollDown {
+        position: absolute;
+        bottom: 30px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 24px;
+        @include sm-block {
+            bottom: 15px;
+        }
+    }
+    
+    .navbar {
+        padding: 30px 0;
+        display: flex;
+        justify-content: space-between;
+        
+        .logo {
+            font-size: 22px;
+        }
+        
+        .toggleBtn {
+            
+            display: flex;
+            .burger {
+                width: 20px;
+                height: 20px;
+                
+                display: inline-flex;
+                flex-direction: column;
+                justify-content: space-around;
+                align-items: flex-start;
+                margin-left: 10px;
+                cursor: pointer;
+                
+                &__lines {
+                    display: inline-block;
+                    height: 2px;
+                    background: $color-white;
+                    border-radius: 30px;
+                    transition: width .2s ease-in-out;
+                    
+                    
+                }
+                
+                &:hover .burger__lines {
+                    width: 100%;
+                }
+                @for $i from 1 through 3 {
+                    &__lines:nth-of-type(#{$i}) {
+                        width:  #{10% + 30 * $i};
+                    }
+                }
+            }
+        } 
+        
+        .menuList {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            padding-top: 60px;
+            background: #3a424b;
+            padding: 50px;
+            opacity: 0;
+            display: none;
+            transition: opacity .3s ease-in-out;
+            
+            &.active {
+                opacity: 1;
+                display: block;
+            }
+            
+            .closeBtn {
+                position: fixed;
+                right: 30px;
+                top: 40px;
+            }
+            
+            .goldHr {
+                margin: 0;
+                margin-top: 30px;
+            }
+            
+            &__items a {
+                font-size: 40px;
+                text-transform: uppercase;
+                text-decoration: none;
+                color: $color-white;
+                &:hover {
+                    color: $color-gold;
+                }
+            }   
+            .socialLinks {
+                margin-top: 10px;
+                width: 200px;
+                max-width: 100%;
+                display: flex;
+                justify-content: space-around;
+                
+                a {
+                    display: inline-block;
+                    font-size: 20px;
+                    width: 30px;
+                    height: 30px;
+                    // background: #000;
+                    color: $color-white;
+                    
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    border: 3px solid #fff;
+                    border-radius: 50%;
+                    transition: color .2s ease-in-out, border-color .3s ease-in-out;
+                    
+                    &:hover {
+                        color: $color-gold;
+                        border-color: $color-gold;
+                    }
+                }
+            }         
+        }
+    }
+    
+    @include sm-block {
+        min-height: 50vh;
+        padding-bottom: 80px;     
+    }
+}
+
+.headerContent {
+    text-align: center;
+    
+    
+    .pageTitle {
+       font: {
+           size: 70px;
+           weight: 700;
+       } 
+       text-transform: uppercase;
+       margin: 37px;
+       margin-top: 100px;  
+        @include lg-block {
+            font-size: 60px;
+        }
+        @include md-block {
+            margin-top: 60px;
+        }
+        @include sm-block {
+            margin-top: 50px;
+            font-size: 40px;
+        }
+        @include xs-block {
+            margin-top: 40px;                  
+            font-size: 40px;
+        }
+    }
+    
+    
+    .pageDesc {
+        max-width: 700px;
+        margin: 30px auto;
+        font-size: 22px;
+        
+        @include lg-block {
+            font-size: 20px;
+        }
+        @include md-block {
+            font-size: 18px;
+        }
+        @include sm-block {
+            font-size: 16px;
+        }
+    }
+    
+    
+    .customBtn {
+        margin-right: 25px;
+        @include sm-block {
+            margin-right: 0;
+            margin-top: 20px;
+        }
+
+    }
+}
